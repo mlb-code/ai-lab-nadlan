@@ -53,7 +53,7 @@ export default function Presentation() {
     <div className="fixed inset-0 z-[100] bg-bg flex flex-col"
       style={{
         backgroundImage:
-          'radial-gradient(ellipse 80% 50% at 50% -10%, rgba(208,136,86,0.06), transparent 60%)'
+          'radial-gradient(ellipse 80% 50% at 50% -10%, rgba(194,65,12,0.08), transparent 60%)'
       }}
     >
       {/* Top bar */}
@@ -61,7 +61,7 @@ export default function Presentation() {
         <div className="flex items-baseline gap-3 min-w-0">
           <Link to="/" className="flex items-baseline gap-2 group shrink-0">
             <span className="mono text-[0.6rem] font-bold text-brand border border-brand px-1.5 py-0.5 rounded-sm tracking-kicker -translate-y-px">
-              נדל״ן
+              Urban
             </span>
             <span className="font-display font-black text-base text-ink-100 group-hover:text-brand transition">AI Lab</span>
           </Link>
@@ -148,14 +148,14 @@ export default function Presentation() {
         {index === total - 1 ? (
           <button
             onClick={() => { toggleCompleted(lesson.id); }}
-            className={done ? 'btn-mono border border-brand text-brand bg-brand/[0.08]' : 'btn-mono bg-brand text-black'}
+            className={done ? 'btn-mono border border-brand text-brand bg-brand/[0.08]' : 'btn-mono bg-brand text-cream'}
           >
             {done ? '✓ הושלם' : 'סמן כהושלם'}
           </button>
         ) : (
           <button
             onClick={next}
-            className="btn-mono bg-brand text-black"
+            className="btn-mono bg-brand text-cream"
           >
             הבא ←
           </button>
@@ -177,7 +177,7 @@ export default function Presentation() {
 
 function ThumbnailsOverlay({ slides, currentIndex, onSelect, onClose }) {
   return (
-    <div className="fixed inset-0 z-[110] bg-black/80 backdrop-blur-sm grid place-items-center p-6" onClick={onClose}>
+    <div className="fixed inset-0 z-[110] bg-ink-100/80 backdrop-blur-sm grid place-items-center p-6" onClick={onClose}>
       <div className="card-elev p-6 max-w-4xl w-full max-h-[80vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center justify-between mb-5">
           <div className="kicker">תוכן השיעור</div>
@@ -567,7 +567,7 @@ function HomeworkSlide({ slide }) {
           <ol className="space-y-3 max-w-4xl">
             {slide.items?.map((item, i) => (
               <li key={i} className="card-elev p-5 sm:p-6 flex items-start gap-4 sm:gap-6 hover:border-brand/40 transition">
-                <span className="grid place-items-center w-10 h-10 sm:w-12 sm:h-12 shrink-0 bg-brand text-black mono font-bold rounded-sm text-sm sm:text-base">
+                <span className="grid place-items-center w-10 h-10 sm:w-12 sm:h-12 shrink-0 bg-brand text-cream mono font-bold rounded-sm text-sm sm:text-base">
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 <div className="flex-1 min-w-0">
@@ -662,7 +662,7 @@ function FlowSlide({ slide }) {
           {slide.steps.map((step, i) => (
             <li key={i} className="relative">
               <div className="card-elev p-5 sm:p-6 flex items-start gap-4 sm:gap-5 hover:border-brand/40 transition">
-                <span className="grid place-items-center w-10 h-10 sm:w-12 sm:h-12 shrink-0 bg-brand text-black mono font-bold rounded-sm text-sm sm:text-base">
+                <span className="grid place-items-center w-10 h-10 sm:w-12 sm:h-12 shrink-0 bg-brand text-cream mono font-bold rounded-sm text-sm sm:text-base">
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 <div className="flex-1 min-w-0">

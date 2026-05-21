@@ -3,25 +3,22 @@ import { useNavigate, Navigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext.jsx'
 
 export default function Login() {
-  const { user, login, demoPassword } = useAuth()
+  const { user, login } = useAuth()
   const navigate = useNavigate()
   const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
   if (user) return <Navigate to="/" replace />
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     setError('')
     setLoading(true)
-    setTimeout(() => {
-      const res = login(email.trim(), password)
-      setLoading(false)
-      if (!res.ok) setError(res.error)
-      else navigate('/')
-    }, 350)
+    const res = await login(email)
+    setLoading(false)
+    if (!res.ok) setError(res.error)
+    else navigate('/')
   }
 
   return (
@@ -30,12 +27,12 @@ export default function Login() {
       <div className="hidden lg:flex relative items-center justify-center overflow-hidden bg-bg-side border-l border-line">
         <div className="absolute inset-0 opacity-50" style={{
           backgroundImage:
-            'radial-gradient(ellipse 60% 50% at 30% 20%, rgba(208,136,86,0.15), transparent 60%), radial-gradient(ellipse 50% 50% at 80% 80%, rgba(208,136,86,0.06), transparent 60%)'
+            'radial-gradient(ellipse 60% 50% at 30% 20%, rgba(194,65,12,0.15), transparent 60%), radial-gradient(ellipse 50% 50% at 80% 80%, rgba(194,65,12,0.06), transparent 60%)'
         }} />
         <div className="relative z-10 max-w-md px-12">
           <div className="flex items-baseline gap-2 mb-12">
             <span className="mono text-xs font-bold text-brand border border-brand px-2 py-0.5 rounded-sm tracking-kicker -translate-y-1">
-              נדל״ן
+              Urban
             </span>
             <span className="font-display font-black text-2xl text-ink-100">AI Lab</span>
           </div>
@@ -67,11 +64,20 @@ export default function Login() {
       {/* Right form panel */}
       <div className="flex items-center justify-center px-6 py-12 lg:px-12">
         <div className="w-full max-w-md">
-          <div className="lg:hidden flex items-baseline gap-2 mb-10">
-            <span className="font-display font-black text-xl text-ink-100">AI Lab</span>
-            <span className="mono text-xs font-bold text-brand border border-brand px-1.5 py-0.5 rounded-sm tracking-kicker -translate-y-px">
-              נדל״ן
-            </span>
+          <div className="lg:hidden flex items-center justify-between mb-10">
+            <div className="flex items-baseline gap-2">
+              <span className="font-display font-black text-xl text-ink-100">AI Lab</span>
+              <span className="mono text-xs font-bold text-brand border border-brand px-1.5 py-0.5 rounded-sm tracking-kicker -translate-y-px">
+                Urban
+              </span>
+            </div>
+            <a
+              href="https://urban.ai-lab.co.il/"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-ink-300 hover:text-brand transition"
+            >
+              <span>חזרה לאתר</span>
+              <span>→</span>
+            </a>
           </div>
 
           <div className="kicker mb-5">התחברות</div>
@@ -79,7 +85,7 @@ export default function Login() {
             התחבר לאזור האישי
           </h2>
           <p className="text-base text-ink-300 mb-8">
-            הזן את פרטי הגישה שקיבלת באימייל.
+            הזן את המייל שאיתו נרשמת לקורס. נכניס אותך אוטומטית.
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -99,22 +105,6 @@ export default function Login() {
               />
             </div>
 
-            <div>
-              <label className="mono text-xs uppercase tracking-kicker text-ink-500 block mb-2">
-                סיסמה
-              </label>
-              <input
-                type="password"
-                required
-                autoComplete="current-password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
-                className="input"
-                dir="ltr"
-              />
-            </div>
-
             {error && (
               <div className="border border-warn/40 bg-warn/10 px-4 py-3 text-sm text-warn rounded-sm">
                 {error}
@@ -122,15 +112,14 @@ export default function Login() {
             )}
 
             <button type="submit" disabled={loading} className="btn-primary w-full justify-center">
-              {loading ? 'מתחבר…' : 'התחברות'}
+              {loading ? 'בודק…' : 'כניסה'}
               {!loading && <span className="btn-arrow">←</span>}
             </button>
           </form>
 
-          <div className="mt-8 border border-dashed border-line-strong bg-bg-elev px-4 py-3 text-xs text-ink-500 rounded-sm">
-            <span className="mono text-brand font-bold ml-1">מצב הדגמה ·</span>
-            כל אימייל תקין + סיסמה <code className="mono text-ink-100">{demoPassword}</code>
-          </div>
+          <p className="mt-6 text-xs text-ink-500 leading-relaxed">
+            לא נרשמת עדיין? הירשם דרך <a href="https://urban.ai-lab.co.il/#register" className="text-brand hover:underline">דף ההרשמה</a>.
+          </p>
 
           <div className="mt-10 text-center mono text-xs text-ink-700 tracking-mono">
             © {new Date().getFullYear()} AI LAB · ALL RIGHTS RESERVED

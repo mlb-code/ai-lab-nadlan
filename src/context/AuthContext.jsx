@@ -1,14 +1,18 @@
 import { createContext, useContext, useState, useEffect } from 'react'
-import usersData from '../data/users.json'
+import { AUTH_ENDPOINT, STORAGE_KEY } from '../config/auth.js'
 
 const AuthContext = createContext(null)
 
-const DEMO_PASSWORD = 'ailab2026'
-const STORAGE_KEY = 'ai-lab-portal-auth'
-
-function lookupUser(email) {
-  const lower = email.toLowerCase().trim()
-  return usersData.users.find((u) => u.email.toLowerCase() === lower)
+function normalizeUser(raw) {
+  if (!raw || !raw.email) return null
+  return {
+    email: String(raw.email).toLowerCase(),
+    name: raw.name || String(raw.email).split('@')[0],
+    role: raw.role || 'student',
+    isAdmin: raw.role === 'admin' || raw.role === 'instructor',
+    level: String(raw.level || 'basic').toLowerCase(),
+    group: String(raw.group || '').toLowerCase(),
+  }
 }
 
 export function AuthProvider({ children }) {
@@ -16,56 +20,45 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Read user authenticated via starter.ai-lab.co.il login
     try {
-      const raw = localStorage.getItem('ai_lab_user')
-      if (raw) {
-        const u = JSON.parse(raw)
-        setUser({
-          email: u.email,
-          name: u.name || u.email.split('@')[0],
-          role: u.isAdmin ? 'admin' : 'student',
-          isAdmin: !!u.isAdmin,
-        })
-        setLoading(false)
-        return
-      }
+      const raw = localStorage.getItem(STORAGE_KEY)
+      if (raw) setUser(JSON.parse(raw))
     } catch {}
-    // Fallback: guest (direct access without login)
-    setUser({ email: 'guest@ai-lab.co.il', name: 'אורח/ת', role: 'student' })
     setLoading(false)
   }, [])
 
-  const login = (email, password) => {
-    if (!email.includes('@')) {
+  const login = async (email) => {
+    const clean = String(email || '').trim().toLowerCase()
+    if (!clean.includes('@')) {
       return { ok: false, error: 'נא להזין כתובת מייל תקינה.' }
     }
-    if (password !== DEMO_PASSWORD) {
-      return { ok: false, error: 'סיסמה שגויה. נסו שוב.' }
+    if (!AUTH_ENDPOINT) {
+      return { ok: false, error: 'שירות ההתחברות אינו מוגדר. צור קשר עם המרצה.' }
     }
-    const known = lookupUser(email)
-    const fallbackName = email.split('@')[0].replace(/[._-]/g, ' ')
-    const u = {
-      email,
-      name: known?.name || fallbackName || 'סטודנט',
-      role: known?.role || 'student'
+    try {
+      const url = `${AUTH_ENDPOINT}?email=${encodeURIComponent(clean)}`
+      const res = await fetch(url, { method: 'GET' })
+      if (!res.ok) return { ok: false, error: 'שגיאת רשת. נסה שוב.' }
+      const data = await res.json()
+      if (!data.ok) {
+        return { ok: false, error: data.error || 'המייל לא נמצא ברשימת הנרשמים.' }
+      }
+      const u = normalizeUser({ email: clean, ...data.user })
+      setUser(u)
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(u)) } catch {}
+      return { ok: true }
+    } catch (err) {
+      return { ok: false, error: 'לא ניתן להתחבר לשרת ההרשמה.' }
     }
-    setUser(u)
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(u))
-    return { ok: true }
   }
 
   const logout = () => {
     setUser(null)
-    try {
-      localStorage.removeItem(STORAGE_KEY)
-      localStorage.removeItem('ai_lab_user')
-    } catch {}
-    window.location.href = 'https://nadlan.ai-lab.co.il/'
+    try { localStorage.removeItem(STORAGE_KEY) } catch {}
   }
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, logout, demoPassword: DEMO_PASSWORD }}>
+    <AuthContext.Provider value={{ user, loading, login, logout }}>
       {children}
     </AuthContext.Provider>
   )

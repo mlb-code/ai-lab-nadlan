@@ -73,7 +73,7 @@ export default function DevToolsIndex() {
                 href={tool.url}
                 target="_blank"
                 rel="noreferrer"
-                className="btn-mono bg-brand text-black hover:bg-brand-glow"
+                className="btn-mono bg-brand text-cream hover:bg-brand-glow"
               >
                 {CTA_LABELS[tool.id] || 'להרשמה'} ↗
               </a>

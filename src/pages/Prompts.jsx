@@ -81,7 +81,7 @@ export default function Prompts() {
                     <div className="kicker-plain">פרומפט מוכן</div>
                     <button
                       onClick={() => copy(p.prompt, p.id)}
-                      className="btn-mono bg-brand text-black"
+                      className="btn-mono bg-brand text-cream"
                     >
                       {copiedId === p.id ? '✓ הועתק' : 'העתקה'}
                     </button>

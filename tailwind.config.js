@@ -10,35 +10,38 @@ export default {
       },
       colors: {
         bg: {
-          DEFAULT: '#16181c',
-          elev: '#1e2126',
-          card: '#24272d',
-          side: '#131519',
-          ink: '#2a2e35'
+          DEFAULT: '#A8A39E',
+          elev: '#B6B1AC',
+          card: '#BFB9B3',
+          side: '#9D9893',
+          ink: '#8F8A85'
         },
         ink: {
-          100: '#f4f3f1',
-          300: '#c9c7c2',
-          500: '#8b8a86',
-          700: '#56565a',
-          900: '#34343a'
+          100: '#1F1D1B',
+          300: '#2E2B28',
+          500: '#4A453F',
+          700: '#6F6A63',
+          900: '#8F8A85'
         },
         brand: {
-          DEFAULT: '#d08856',
-          glow: '#e0a87e',
-          dim: 'rgba(208,136,86,0.08)',
-          dim2: 'rgba(208,136,86,0.16)'
+          DEFAULT: '#C2410C',
+          glow: '#D2521E',
+          dim: 'rgba(194,65,12,0.08)',
+          dim2: 'rgba(194,65,12,0.16)'
+        },
+        cream: {
+          DEFAULT: '#F5F1EB'
         },
         line: {
-          DEFAULT: 'rgba(255,255,255,0.08)',
-          strong: 'rgba(255,255,255,0.16)'
+          DEFAULT: 'rgba(31,29,27,0.14)',
+          strong: 'rgba(31,29,27,0.28)'
         },
-        warn: '#e5484d',
-        gold: '#d6a35c'
+        warn: '#C2410C',
+        gold: '#B98A4A'
       },
       boxShadow: {
-        'brand': '0 8px 24px rgba(208,136,86,0.25)',
-        'brand-lg': '0 12px 32px rgba(208,136,86,0.38)'
+        'brand': '0 8px 24px rgba(194,65,12,0.22)',
+        'brand-lg': '0 12px 32px rgba(194,65,12,0.36)'
       },
       letterSpacing: {
         'kicker': '0.22em',

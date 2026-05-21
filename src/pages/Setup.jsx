@@ -71,7 +71,7 @@ export default function Setup() {
                   href={step.downloadUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="btn-mono bg-brand text-black hover:bg-brand-glow shrink-0"
+                  className="btn-mono bg-brand text-cream hover:bg-brand-glow shrink-0"
                 >
                   {step.downloadLabel || 'לאתר'} ↗
                 </a>

@@ -16,7 +16,7 @@ export default function Community() {
       </div>
 
       <section className="card-elev accent-stripe p-10 sm:p-12 relative overflow-hidden"
-        style={{ background: 'linear-gradient(135deg, rgba(208,136,86,0.08), rgba(208,136,86,0.02)), #1e2126' }}
+        style={{ background: 'linear-gradient(135deg, rgba(194,65,12,0.10), rgba(194,65,12,0.03)), #B6B1AC' }}
       >
         <div className="kicker mb-4">אזור הקהילה</div>
         <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-ink-100 leading-tight tracking-tight max-w-xl mb-4">

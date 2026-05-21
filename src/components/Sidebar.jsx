@@ -18,7 +18,7 @@ export default function Sidebar() {
         {/* Header */}
         <div className="px-5 py-5 border-b border-line">
           <div className="flex items-center gap-3.5">
-            <div className="w-12 h-12 grid place-items-center rounded-full bg-gradient-to-br from-brand to-brand-glow text-black font-black text-xl shrink-0">
+            <div className="w-12 h-12 grid place-items-center rounded-full bg-gradient-to-br from-brand to-brand-glow text-cream font-black text-xl shrink-0">
               {initial}
             </div>
             <div className="min-w-0 flex-1">
@@ -28,7 +28,7 @@ export default function Sidebar() {
               <div className="flex items-baseline gap-2 mt-1">
                 <span className="font-display font-black text-sm text-ink-100 leading-none">AI Lab</span>
                 <span className="mono text-[0.6rem] font-bold text-brand border border-brand px-1.5 py-0.5 rounded-sm tracking-kicker leading-none">
-                  נדל״ן
+                  Urban
                 </span>
               </div>
             </div>
@@ -40,14 +40,14 @@ export default function Sidebar() {
           href={lessonsData.zoomUrl}
           target="_blank"
           rel="noreferrer"
-          className="mx-3 mt-3 px-3 py-2.5 bg-gradient-to-br from-brand to-brand-glow text-black font-bold flex items-center gap-2.5 rounded-sm shadow-brand hover:shadow-brand-lg active:scale-[0.98] transition"
+          className="mx-3 mt-3 px-3 py-2.5 bg-gradient-to-br from-brand to-brand-glow text-cream font-bold flex items-center gap-2.5 rounded-sm shadow-brand hover:shadow-brand-lg active:scale-[0.98] transition"
         >
-          <span className="grid place-items-center w-7 h-7 bg-black/15 rounded-full text-sm shrink-0">▶</span>
+          <span className="grid place-items-center w-7 h-7 bg-ink-100/15 rounded-full text-sm shrink-0">▶</span>
           <div className="flex-1 leading-tight">
             <div className="text-sm font-extrabold">כניסה לכיתה</div>
             <div className="text-[10px] font-medium opacity-70">Zoom · בלייב</div>
           </div>
-          <span className="w-1.5 h-1.5 bg-black/40 rounded-full animate-pulse shrink-0" />
+          <span className="w-1.5 h-1.5 bg-ink-100/40 rounded-full animate-pulse shrink-0" />
         </a>
 
         {/* Nav */}
@@ -65,8 +65,18 @@ export default function Sidebar() {
             ))}
           </div>
 
-          <SectionLabel>קהילה</SectionLabel>
-          <NavItem to="/community" icon="○">קהילת ההתחדשות</NavItem>
+          <SectionLabel>ארגז כלים</SectionLabel>
+          <NavItem to="/system-requirements" icon="⚡">דרישות מערכת</NavItem>
+          <NavItem to="/tools/ai" icon="✦">כלי AI</NavItem>
+          <NavItem to="/tools/dev" icon="⚙">כלי פיתוח</NavItem>
+          <NavItem to="/setup" icon="↓">התקנה והתחלה</NavItem>
+          <NavItem to="/prompts" icon="⌘">תבניות פרומפטים</NavItem>
+
+          <SectionLabel>עזרים</SectionLabel>
+          <NavItem to="/glossary" icon="☰">מילון מונחים</NavItem>
+          <NavItem to="/projects" icon="◐">פרויקטים לדוגמה</NavItem>
+          <NavItem to="/library" icon="♪">ספרייה</NavItem>
+          <NavItem to="/community" icon="○">הקהילה</NavItem>
         </nav>
 
         {/* Logout */}
@@ -100,7 +110,7 @@ function NavItem({ to, icon, children, end }) {
         `flex items-center gap-3 px-3 py-1.5 rounded-sm text-sm font-semibold transition border ${
           isActive
             ? 'bg-brand/[0.08] text-brand border-brand'
-            : 'text-ink-300 hover:bg-white/5 hover:text-ink-100 border-transparent hover:border-line'
+            : 'text-ink-300 hover:bg-ink-100/5 hover:text-ink-100 border-transparent hover:border-line'
         }`
       }
     >
@@ -125,7 +135,7 @@ function LessonNavItem({ lesson, done, onNavigate }) {
             ? 'bg-brand/[0.08] text-brand border-brand'
             : locked
               ? 'text-ink-700 cursor-not-allowed border-transparent'
-              : 'text-ink-300 hover:bg-white/5 hover:text-ink-100 border-transparent hover:border-line'
+              : 'text-ink-300 hover:bg-ink-100/5 hover:text-ink-100 border-transparent hover:border-line'
         }`
       }
     >

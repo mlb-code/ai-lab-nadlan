@@ -39,7 +39,7 @@ export default function Dashboard() {
 
       {/* Hero card — current lesson */}
       <section className="card-elev accent-stripe relative overflow-hidden p-6 sm:p-10 lg:p-12"
-        style={{ background: 'linear-gradient(135deg, rgba(208,136,86,0.08), rgba(208,136,86,0.02)), #1e2126' }}
+        style={{ background: 'linear-gradient(135deg, rgba(194,65,12,0.10), rgba(194,65,12,0.03)), #B6B1AC' }}
       >
         <div className="kicker mb-3 sm:mb-4">השיעור שלך עכשיו</div>
         <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight text-ink-100 mb-3">
@@ -122,8 +122,8 @@ function RecordingCard({ recording }) {
     >
       <div className="kicker mb-4">ההקלטה האחרונה</div>
       <div className="aspect-video bg-bg-card rounded-sm border border-line grid place-items-center relative overflow-hidden mb-4">
-        <div className="grid place-items-center w-14 h-14 rounded-full bg-brand text-black shadow-brand group-hover:shadow-brand-lg transition-all group-hover:scale-105">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="black">
+        <div className="grid place-items-center w-14 h-14 rounded-full bg-brand text-cream shadow-brand group-hover:shadow-brand-lg transition-all group-hover:scale-105">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#F5F1EB">
             <polygon points="6 4 20 12 6 20 6 4" />
           </svg>
         </div>

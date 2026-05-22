@@ -53,7 +53,7 @@ export default function Presentation() {
     <div className="fixed inset-0 z-[100] bg-bg flex flex-col"
       style={{
         backgroundImage:
-          'radial-gradient(ellipse 80% 50% at 50% -10%, rgba(194,65,12,0.08), transparent 60%)'
+          'radial-gradient(ellipse 80% 50% at 50% -10%, rgba(139,94,60,0.08), transparent 60%)'
       }}
     >
       {/* Top bar */}

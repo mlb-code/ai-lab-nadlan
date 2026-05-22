@@ -39,7 +39,7 @@ export default function Dashboard() {
 
       {/* Hero card — current lesson */}
       <section className="card-elev accent-stripe relative overflow-hidden p-6 sm:p-10 lg:p-12"
-        style={{ background: 'linear-gradient(135deg, rgba(194,65,12,0.10), rgba(194,65,12,0.03)), #B6B1AC' }}
+        style={{ background: 'linear-gradient(135deg, rgba(139,94,60,0.10), rgba(139,94,60,0.03)), #17171C' }}
       >
         <div className="kicker mb-3 sm:mb-4">השיעור שלך עכשיו</div>
         <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight text-ink-100 mb-3">

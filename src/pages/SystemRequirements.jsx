@@ -109,7 +109,7 @@ export default function SystemRequirements() {
       </section>
 
       <section className="card-elev accent-stripe p-6 sm:p-10 relative overflow-hidden"
-        style={{ background: 'linear-gradient(135deg, rgba(194,65,12,0.10), rgba(194,65,12,0.03)), #B6B1AC' }}
+        style={{ background: 'linear-gradient(135deg, rgba(139,94,60,0.10), rgba(139,94,60,0.03)), #17171C' }}
       >
         <div className="kicker mb-3 sm:mb-4">הכל עומד בדרישות?</div>
         <h3 className="font-display text-2xl sm:text-3xl font-extrabold text-ink-100 leading-tight mb-3">

@@ -27,7 +27,7 @@ export default function Login() {
       <div className="hidden lg:flex relative items-center justify-center overflow-hidden bg-bg-side border-l border-line">
         <div className="absolute inset-0 opacity-50" style={{
           backgroundImage:
-            'radial-gradient(ellipse 60% 50% at 30% 20%, rgba(194,65,12,0.15), transparent 60%), radial-gradient(ellipse 50% 50% at 80% 80%, rgba(194,65,12,0.06), transparent 60%)'
+            'radial-gradient(ellipse 60% 50% at 30% 20%, rgba(139,94,60,0.15), transparent 60%), radial-gradient(ellipse 50% 50% at 80% 80%, rgba(139,94,60,0.06), transparent 60%)'
         }} />
         <div className="relative z-10 max-w-md px-12">
           <div className="flex items-baseline gap-2 mb-12">
